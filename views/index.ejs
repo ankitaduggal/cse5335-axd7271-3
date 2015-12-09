@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+<div id = "data"></div>
+
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src ="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+
+<script language="javascript" type="text/javascript">
+
+
+
+  $(function() {
+    $.ajax(
+            {
+              type: 'GET',
+              url: 'http://cse5335-axd7271-3.herokuapp.com/users',
+              dataType: 'json',
+              contentType: 'application/json; charset=utf-8',
+              success: function (data) {
+                $.each(data, function (key, value) {
+                  $('#data').append(
+                          "<table id='table'>" + "<tbody>" + "<tr>" + "<td align='center' style='width: 15%' >" + value.id + "</td>" + "<td align='center' style='width: 15%' >" + value.isActive + "</td>" + "<td align='center' style='width: 15%' >" + value.age + "</td>" + "<td align='center' style='width: 15%' >" + value.name + "</td>" + "</tr>" + "</tbody>" + "</table>");
+                  //alert('inside annymous success');
+
+                });
+              },
+              error: function (result) {
+                alert("Error");
+              }
+            });
+  });
+
+</script>
+</body>
+</html>
